@@ -48,7 +48,7 @@ const consult = async(path, code, year) => {
         });
 } */
 
-const saveData = async(path, country, year, out) => {
+const saveData = async(path, country, year) => {
     /* let data = JSON.stringify(js);
     fs.writeFileSync(`./data/${out}.json`, data, (err, data) => {
         if (err) throw new Error('No se puede guardar la data', err);
@@ -58,9 +58,9 @@ const saveData = async(path, country, year, out) => {
             for (let i of inf) {
                 if (i.Reference == 1) {
                     let data = '';
-                    fs.writeFile(`${i.Code}-${i.Year}.txt`, data, (err) => {
+                    fs.writeFile(`${i.Code}-${i.Year}.txt`, data, (err, data) => {
                         if (err)
-                            console.log(err);
+                            throw new Error('No se puede guardar la data', err)
                         else
                             console.log('Archivo guardado exitosamente');
                     })
@@ -180,18 +180,16 @@ const guardar = (path, code, year, out) => {
     consult(path, code, year).then((inf) => {
         for (let i of inf) {
             if (i.Reference == 1) {
-                /* let medi = {
-                    Global_Media: Number(i.Global_Media),
+                let medi = {
                     Year: year,
                     Code: code,
                     Suscription: Number(i.Suscription),
-                    Value: i.Value,
                     Reference: 1
                 }
-                js.push(medi); */
+                js.push(medi);
             }
         }
-        saveData(path, code, year, out);
+        saveData(path, code, year);
     });
 }
 
