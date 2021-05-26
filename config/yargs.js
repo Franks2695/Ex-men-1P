@@ -13,13 +13,13 @@ const country = {
 
 const year = {
     default: true,
-    default: 2018,
+    default: 1960,
     alias: 'y',
     desc: 'Permite especificar el año para el cual se requiere las estadísticas'
 }
 
 const argv = require("yargs")
-    .command('publicar', 'Publicará las estadísticas en una página web básica', {
+    .command('mostrar', 'Publicará las estadísticas en una página web básica', {
         file,
         country,
         year
@@ -27,8 +27,7 @@ const argv = require("yargs")
     .command('guardar', 'Muestra la lista de tareas', {
         file,
         country,
-        year,
-        out
+        year
     })
     .help()
     .argv;

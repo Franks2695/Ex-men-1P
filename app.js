@@ -1,5 +1,5 @@
 const { argv } = require('./config/yargs');
-const { convertir_guardar, publicar, guardar, consult } = require('./controlador/funciones');
+const { convertir_guardar, publicar, guardar, consult } = require('./buscador/buscar');
 
 let comando = argv._[0];
 
